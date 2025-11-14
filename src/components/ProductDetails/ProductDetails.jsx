@@ -10,13 +10,17 @@ const ProductDetails = () => {
   const [bids, setBids] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/products/bids/${product_id}`)
+    fetch(`http://localhost:3000/products/bids/${product_id}`, {
+      headers: {
+        authorization: `Bearer ${user.accessToken}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setBids(data);
         console.log(data);
       });
-  }, [product_id]);
+  }, [product_id, user]);
 
   if (loading) {
     return;

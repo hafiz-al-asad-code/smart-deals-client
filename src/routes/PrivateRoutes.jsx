@@ -9,6 +9,8 @@ const PrivateRoutes = ({ children }) => {
     return;
   }
 
+  console.log("token", user?.accessToken);
+
   if (!user) {
     return <Navigate to="/register"></Navigate>;
   }
